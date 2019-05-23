@@ -121,5 +121,8 @@ var mapScript = {
 			start: "9",
 			end: "10"
 		}
+	],
+	climate: [
+	{start: "1", maturity: "0.8" }
 	]
 };

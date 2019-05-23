@@ -20,7 +20,11 @@ var mapScript = {
 			start: "1",
 			end: "2"
 		}
-	]
+	],
+        climate: [
+        {start: "1", maturity: "0.8" }
+        ]
+
 }; */
 
 var padding = 20;
@@ -38,10 +42,27 @@ var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
 	var x2 = matToX(endElement.maturity, mapWidth);
 	var y1 = visToY(startElement.visibility, mapHeight);
 	var y2 = visToY(endElement.visibility, mapHeight);
-
+	var x1b = x1+100;
+	var xx1 =x1+100;
+	var yat = y1-10;
+	var yab = y1+10;
+	var xp = xx1+10;
+	
 	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="grey" />';
 
 };
+
+var renderArrow = function(startElement, endmaturity, mapWidth, mapHeight) {
+        var x1 = matToX(startElement.maturity, mapWidth);
+        var xx1 = matToX(endmaturity, mapWidth);
+        var y1 = visToY(startElement.visibility, mapHeight);
+        var yat = y1-10;
+        var yab = y1+10;
+        var xp = xx1+10;
+	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3"/> <polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
+
+};
+
 
 var getElementById = function(elements, id) {
 	var hasId = function(element) {
@@ -56,6 +77,15 @@ var renderLinks = function(mapScript, mapWidth, mapHeight) {
 	};
 	return mapScript.links.map(mapLink).join('');
 };
+
+
+var renderArrows = function(mapScript, mapWidth, mapHeight) {
+        var mapArrow = function(climate) {
+                return renderArrow(getElementById(mapScript.elements,climate.start), climate.maturity, mapWidth, mapHeight);
+        };
+        return mapScript.climate.map(mapArrow).join('');
+};
+
 
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
@@ -89,7 +119,10 @@ var renderMap = function(mapScript, mapWidth, mapHeight) {
 	      '<g id="elements">' +
 	      	renderElements(mapScript, mapWidth, mapHeight) +
 	      '</g>' +
-	   	'</g>';
+	       'g id="arrows">' + 
+		 renderArrows(mapScript, mapWidth, mapHeight) +
+
+	   	'</g></g>';
 
 	return mapSvg;
 };
