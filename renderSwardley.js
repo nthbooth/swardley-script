@@ -26,7 +26,7 @@ var mapScript = {
 		}
 	],
         arrow: [
-        {start: "1", maturity: "0.8" }
+        {start: "1", maturity: "0.8" , reverse: "true"}
         ]
 
 }; */
@@ -56,14 +56,26 @@ var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
 
 };
 
-var renderArrow = function(startElement, endmaturity, mapWidth, mapHeight) {
-        var x1 = matToX(startElement.maturity, mapWidth);
+var renderArrow = function(startElement, temparrow, mapWidth, mapHeight) {
+				var endmaturity = temparrow.maturity;
+				var x1 = matToX(startElement.maturity, mapWidth);
         var xx1 = matToX(endmaturity, mapWidth);
         var y1 = visToY(startElement.visibility, mapHeight);
-        var yat = y1-10;
-        var yab = y1+10;
-        var xp = xx1+10;
-	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/> <polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
+     
+				if(temparrow.reverse){
+					var yat = y1-10;
+					var yab = y1+10;
+					var xb = x1+10;	
+					return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+
+								'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x1+','+y1+'" class="traingle"  />';		
+								
+				}else{
+					var yat = y1-10;
+					var yab = y1+10;
+					var xp = xx1+10;
+					return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+ 
+						'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
+				}
 
 };
 
@@ -85,7 +97,7 @@ var renderLinks = function(mapScript, mapWidth, mapHeight) {
 
 var renderArrows = function(mapScript, mapWidth, mapHeight) {
         var mapArrow = function(arrow) {
-                return renderArrow(getElementById(mapScript.elements,arrow.start), arrow.maturity, mapWidth, mapHeight);
+                return renderArrow(getElementById(mapScript.elements,arrow.start), arrow, mapWidth, mapHeight);
         };
         return mapScript.arrow.map(mapArrow).join(''); //here
 };
