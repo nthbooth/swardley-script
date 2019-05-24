@@ -63,7 +63,7 @@ var renderArrow = function(startElement, endmaturity, mapWidth, mapHeight) {
         var yat = y1-10;
         var yab = y1+10;
         var xp = xx1+10;
-	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3"/> <polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
+	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/> <polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
 
 };
 
