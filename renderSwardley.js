@@ -7,7 +7,9 @@ var mapScript = {
 			name: "Element 1",
 			visibility: 0.25,
 			maturity: 0.75,
-						circlecolour: "red"
+						circlecolour: "red",
+									outercirclecoulour: "blue"
+
 
 		},
 		{
@@ -92,18 +94,27 @@ var renderArrows = function(mapScript, mapWidth, mapHeight) {
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
 	var y = visToY(element.visibility, mapHeight);
+	var outerCircleColour="";
 	var circleColour="";
-	if(element.circlecolour){
-			circleColour=
+	if(element.outercirclecolour){
+		outerCircleColour=
 				'<circle cx="0" cy="0" r="10" stroke="black" fill="' +
-				element.circlecolour +
+				element.outercirclecolour +
 				'" />'
 			;
 	}
+	
+	if(element.circlecolour){
+		circleColour=element.circlecolour;
+	} else {
+		circleColour='white';
+	}
+	
 	var elementSvg =
 		'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
-					circleColour +
-					'<circle cx="0" cy="0" r="5" stroke="black" fill="white" />' +
+					outerCircleColour +
+					'<circle cx="0" cy="0" r="5" stroke="black" fill="' +
+					circleColour + '" />' +
           '<text x="10" y="-5" text-anchor="start">' +
           	element.name +
           '</text>  ' +

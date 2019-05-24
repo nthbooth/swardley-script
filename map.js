@@ -7,19 +7,23 @@ var mapScript = {
 			id: "1",
 			name: "Customer",
 			visibility: 1.0,
-			maturity: 0.4
+			maturity: 0.4,
+			circlecolour: "red",
+			outercirclecolour: "blue"
 		},
 		{
 			id: "2",
 			name: "Online image maniputation",
 			visibility: 0.95,
-			maturity: 0.3
+			maturity: 0.3,
+			outercirclecolour: "blue"
 		},
 		{
 			id: "3",
 			name: "Online photo storage",
 			visibility: 0.8,
-			maturity: 0.375
+			maturity: 0.375,
+			circlecolour: "red"
 		},
 		{
 			id: "4",
