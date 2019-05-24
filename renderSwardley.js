@@ -84,10 +84,10 @@ var renderLinks = function(mapScript, mapWidth, mapHeight) {
 
 
 var renderArrows = function(mapScript, mapWidth, mapHeight) {
-        var mapArrow = function(climate) {
-                return renderArrow(getElementById(mapScript.elements,climate.start), climate.maturity, mapWidth, mapHeight);
+        var mapArrow = function(arrow) {
+                return renderArrow(getElementById(mapScript.elements,arrow.start), arrow.maturity, mapWidth, mapHeight);
         };
-        return mapScript.climate.map(mapArrow).join('');
+        return mapScript.arrow.map(mapArrow).join('');
 };
 
 

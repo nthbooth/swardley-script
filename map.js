@@ -126,7 +126,7 @@ var mapScript = {
 			end: "10"
 		}
 	],
-	climate: [
+	arrow: [
 	{start: "1", maturity: "0.8" }
 	]
 };
