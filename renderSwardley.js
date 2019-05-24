@@ -25,7 +25,7 @@ var mapScript = {
 			end: "2"
 		}
 	],
-        climate: [
+        arrow: [
         {start: "1", maturity: "0.8" }
         ]
 
@@ -87,9 +87,8 @@ var renderArrows = function(mapScript, mapWidth, mapHeight) {
         var mapArrow = function(arrow) {
                 return renderArrow(getElementById(mapScript.elements,arrow.start), arrow.maturity, mapWidth, mapHeight);
         };
-        return mapScript.arrow.map(mapArrow).join('');
+        return mapScript.arrow.map(mapArrow).join(''); //here
 };
-
 
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
