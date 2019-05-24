@@ -6,7 +6,9 @@ var mapScript = {
 			id: "1",
 			name: "Element 1",
 			visibility: 0.25,
-			maturity: 0.75
+			maturity: 0.75,
+						circlecolour: "red"
+
 		},
 		{
 			id: "2",
@@ -90,10 +92,18 @@ var renderArrows = function(mapScript, mapWidth, mapHeight) {
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
 	var y = visToY(element.visibility, mapHeight);
-
+	var circleColour="";
+	if(element.circlecolour){
+			circleColour=
+				'<circle cx="0" cy="0" r="10" stroke="black" fill="' +
+				element.circlecolour +
+				'" />'
+			;
+	}
 	var elementSvg =
 		'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
-          '<circle cx="0" cy="0" r="5" stroke="black" fill="white" />' +
+					circleColour +
+					'<circle cx="0" cy="0" r="5" stroke="black" fill="white" />' +
           '<text x="10" y="-5" text-anchor="start">' +
           	element.name +
           '</text>  ' +
@@ -101,6 +111,8 @@ var renderElement = function(element, mapWidth, mapHeight) {
 
     return elementSvg;
 };
+
+
 
 var renderElements = function(mapScript, mapWidth, mapHeight){
 	var mapElement = function (element) {
