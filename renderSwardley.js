@@ -7,8 +7,8 @@ var mapScript = {
 			name: "Element 1",
 			visibility: 0.25,
 			maturity: 0.75,
-			circlecolour: "red",
-			outercirclecoulour: "blue"
+						circlecolour: "red",
+									outercirclecoulour: "blue"
 
 
 		},
@@ -46,18 +46,23 @@ var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
 	var x2 = matToX(endElement.maturity, mapWidth);
 	var y1 = visToY(startElement.visibility, mapHeight);
 	var y2 = visToY(endElement.visibility, mapHeight);
+	var x1b = x1+100;
+	var xx1 =x1+100;
+	var yat = y1-10;
+	var yab = y1+10;
+	var xp = xx1+10;
 	
 	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="grey" />';
 
 };
 
 var renderArrow = function(startElement, temparrow, mapWidth, mapHeight) {
-				var endmaturity = startElement.arrowmaturity;
+				var endmaturity = temparrow.maturity;
 				var x1 = matToX(startElement.maturity, mapWidth);
         var xx1 = matToX(endmaturity, mapWidth);
         var y1 = visToY(startElement.visibility, mapHeight);
      
-				if(startElement.arrowreverse){
+				if(temparrow.reverse){
 					var yat = y1-10;
 					var yab = y1+10;
 					var xb = x1+10;	
@@ -122,8 +127,8 @@ var renderElement = function(element, mapWidth, mapHeight) {
 					'<circle cx="0" cy="0" r="5" stroke="black" fill="' +
 					circleColour + '" />' +
           '<text x="10" y="-5" text-anchor="start">' +
-          	element.name + 
-          '</text>  ' +  
+          	element.name +
+          '</text>  ' +
         '</g>';
 
     return elementSvg;
