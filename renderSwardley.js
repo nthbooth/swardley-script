@@ -7,8 +7,8 @@ var mapScript = {
 			name: "Element 1",
 			visibility: 0.25,
 			maturity: 0.75,
-						circlecolour: "red",
-									outercirclecoulour: "blue"
+			circlecolour: "red",
+			outercirclecoulour: "blue"
 
 
 		},
@@ -46,11 +46,6 @@ var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
 	var x2 = matToX(endElement.maturity, mapWidth);
 	var y1 = visToY(startElement.visibility, mapHeight);
 	var y2 = visToY(endElement.visibility, mapHeight);
-	var x1b = x1+100;
-	var xx1 =x1+100;
-	var yat = y1-10;
-	var yab = y1+10;
-	var xp = xx1+10;
 	
 	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="grey" />';
 
