@@ -1,0 +1,16 @@
+{
+  "name": "wardleymap",
+  "version": "1.0.0",
+  "description": "wardley map app",
+  "author": "Nick",
+  "license": "MIT",
+  "main": "app.js",
+  "keywords": [
+    "nodejs",
+    "bootstrap",
+    "express"
+  ],
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
