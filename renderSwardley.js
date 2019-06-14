@@ -115,17 +115,38 @@ var renderElement = function(element, mapWidth, mapHeight) {
 	} else {
 		circleColour='white';
 	}
+	var arrow_svg="";
+
+// arrowreverse
+if(element.arrowmaturity){
+	var xx1= matToX(element.arrowmaturity, mapWidth);
+	if(element.arrowreverse){
+		var yat = y-10;
+		var yab = y+10;
+		var xb = x+10;	
+		arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+
+					'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x+','+y+'" class="traingle"  />';						
+	}else{
+	var yat = y-10;
+	var yab = y+10;
+	var xp = xx1+10;
+	arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+ 
+	'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  />';
+	console.log(arrow_svg);
+	}
+}
 	
 	var elementSvg =
 		'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
 					outerCircleColour +
 					'<circle cx="0" cy="0" r="5" stroke="black" fill="' +
-					circleColour + '" />' +
-          '<text x="10" y="-5" text-anchor="start">' +
+					circleColour + '" />' + 
+          '<text x="10" y="-5" text-anchor="start">' + 
           	element.name +
-          '</text>  ' +
-        '</g>';
-
+          '</text>  ' + 
+		'</g></g>'+
+		'<g id="arrowbits">' + arrow_svg;
+	console.log(elementSvg);
     return elementSvg;
 };
 
@@ -147,8 +168,8 @@ var renderMap = function(mapScript, mapWidth, mapHeight) {
 	      '</g>' +
 	      '<g id="elements">' +
 	      	renderElements(mapScript, mapWidth, mapHeight) +
-	      '</g>' +
-	       'g id="arrows">' + 
+	      '</g>' + 
+	       '<g id="arrows">' + 
 		 renderArrows(mapScript, mapWidth, mapHeight) +
 
 	   	'</g></g>';

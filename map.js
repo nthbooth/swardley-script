@@ -47,13 +47,16 @@ var mapScript = {
 			id: "7",
 			name: "Platform",
 			visibility: 0.45,
-			maturity: 0.575
+			maturity: 0.575,
+			arrowmaturity: 0.9
 		},
 		{
 			id: "8",
 			name: "Compute",
 			visibility: 0.2,
-			maturity: 0.725
+			maturity: 0.725,
+			arrowmaturity: 0.9,
+			arrowreverse: "true"
 		},
 		{
 			id: "9",
