@@ -4,7 +4,7 @@
   "description": "wardley map app",
   "author": "Nick",
   "license": "MIT",
-  "main": "app.js",
+  "main": "mapping.js",
   "keywords": [
     "nodejs",
     "bootstrap",
