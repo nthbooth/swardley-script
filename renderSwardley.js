@@ -51,30 +51,6 @@ var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
 
 };
 
-var renderArrow = function(startElement, temparrow, mapWidth, mapHeight) {
-				var endmaturity = temparrow.maturity;
-				var x1 = matToX(startElement.maturity, mapWidth);
-        var xx1 = matToX(endmaturity, mapWidth);
-        var y1 = visToY(startElement.visibility, mapHeight);
-     
-				if(temparrow.reverse){
-					var yat = y1-10;
-					var yab = y1+10;
-					var xb = x1+10;	
-					return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+
-								'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x1+','+y1+'" class="traingle"  />';		
-								
-				}else{
-					var yat = y1-10;
-					var yab = y1+10;
-					var xp = xx1+10;
-					return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+ 
-						'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
-				}
-
-};
-
-
 var getElementById = function(elements, id) {
 	var hasId = function(element) {
 		return element.id === id;
@@ -89,13 +65,6 @@ var renderLinks = function(mapScript, mapWidth, mapHeight) {
 	return mapScript.links.map(mapLink).join('');
 };
 
-
-var renderArrows = function(mapScript, mapWidth, mapHeight) {
-        var mapArrow = function(arrow) {
-                return renderArrow(getElementById(mapScript.elements,arrow.start), arrow, mapWidth, mapHeight);
-        };
-        return mapScript.arrow.map(mapArrow).join(''); //here
-};
 
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
@@ -132,7 +101,6 @@ if(element.arrowmaturity){
 	var xp = xx1+10;
 	arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+ 
 	'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  />';
-	console.log(arrow_svg);
 	}
 }
 	
@@ -146,7 +114,6 @@ if(element.arrowmaturity){
           '</text>  ' + 
 		'</g></g>'+
 		'<g id="arrowbits">' + arrow_svg;
-	console.log(elementSvg);
     return elementSvg;
 };
 
@@ -168,9 +135,7 @@ var renderMap = function(mapScript, mapWidth, mapHeight) {
 	      '</g>' +
 	      '<g id="elements">' +
 	      	renderElements(mapScript, mapWidth, mapHeight) +
-	      '</g>' + 
-	       '<g id="arrows">' + 
-		 renderArrows(mapScript, mapWidth, mapHeight) +
+	    
 
 	   	'</g></g>';
 

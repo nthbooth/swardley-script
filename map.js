@@ -128,9 +128,5 @@ var mapScript = {
 			start: "9",
 			end: "10"
 		}
-	],
-	arrow: [
-	{start: "1", maturity: "0.8" },
-	{start: "9", maturity: "0.8", reverse: "true" }
 	]
 };
