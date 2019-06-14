@@ -86,23 +86,30 @@ var renderElement = function(element, mapWidth, mapHeight) {
 	}
 	var arrow_svg="";
 
-// arrowreverse
-if(element.arrowmaturity){
-	var xx1= matToX(element.arrowmaturity, mapWidth);
-	if(element.arrowreverse){
-		var yat = y-10;
-		var yab = y+10;
-		var xb = x+10;	
-		arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+
-					'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x+','+y+'" class="traingle"  />';						
-	}else{
-	var yat = y-10;
-	var yab = y+10;
-	var xp = xx1+10;
-	arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="grey" stroke-width="3" stroke-dasharray="4 4"/>'+ 
-	'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  />';
+	// arrowreverse
+	if(element.arrowmaturity){
+		var xx1= matToX(element.arrowmaturity, mapWidth);
+		if(element.arrowreverse){
+			var yat = y-10;
+			var yab = y+10;
+			var xb = x+10;	
+			arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>'+
+					'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x+','+y+'" class="traingle" style="fill:red" />';						
+		}else{
+			var yat = y-10;
+			var yab = y+10;
+			var xp = xx1+10;
+			arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>'+ 
+					'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  style="fill:red" />';
+		}
 	}
-}
+	var inertiasvg="";
+	if(element.inertiamaturity)
+	{
+		var xxinertia=matToX(element.inertiamaturity, mapWidth)-7.5;
+		var yat = y-15;
+		inertiasvg='<rect x="'+xxinertia+'" y="'+yat+'" width="10" height="30" style="fill:black"/>';
+	}
 	
 	var elementSvg =
 		'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
@@ -113,7 +120,7 @@ if(element.arrowmaturity){
           	element.name +
           '</text>  ' + 
 		'</g></g>'+
-		'<g id="arrowbits">' + arrow_svg;
+		'<g id="arrowbits">' + arrow_svg + inertiasvg;
     return elementSvg;
 };
 
