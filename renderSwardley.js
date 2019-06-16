@@ -212,9 +212,45 @@ var renderSvg = function(mapScript, mapWidth, mapHeight) {
 	return svgHeader + renderMap(mapScript, mapWidth, mapHeight) + svgFooter;
 };
 
+
+function parse_query_string(query) {
+	var vars = query.split("&");
+	var query_string = {};
+	for (var i = 0; i < vars.length; i++) {
+	  var pair = vars[i].split("=");
+	  var key = decodeURIComponent(pair[0]);
+	  var value = decodeURIComponent(pair[1]);
+	  // If first entry with this name
+	  if (typeof query_string[key] === "undefined") {
+		query_string[key] = decodeURIComponent(value);
+		// If second entry with this name
+	  } else if (typeof query_string[key] === "string") {
+		var arr = [query_string[key], decodeURIComponent(value)];
+		query_string[key] = arr;
+		// If third or later entry with this name
+	  } else {
+		query_string[key].push(decodeURIComponent(value));
+	  }
+	}
+	return query_string;
+  }
+
 function draw() {
+	//get the query strings that are provided to the http request. 
+	//console.log( window.location.search.substring(1));
+	var qs= parse_query_string(window.location.search.substring(1))
+	//console.log(qs);
 	var svg = renderSvg(mapScript, mapWidth, mapHeight);
 	var newSvg = document.getElementById('wardley-map');
+
+	//var svg_root = document.getElementById('your_svg_root_element_here');
+
+	//var svg_source = newSvg.outerHTML;
+	//var svg_data_uri = 'data:image/svg+xml;base64,' + btoa(svg_source);
+	//var link = document.getElementById('wardley-map');
+	//link.setAttribute('href', svg_data_uri);
+
+
 	newSvg.outerHTML += svg;
 }
 
