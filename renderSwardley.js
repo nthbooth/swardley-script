@@ -240,6 +240,15 @@ function draw() {
 	//console.log( window.location.search.substring(1));
 	var qs= parse_query_string(window.location.search.substring(1))
 	//console.log(qs);
+	//console.log(qs.url);
+	//console.log(qs.height)
+	if(qs.height){
+		mapHeight=qs.height;
+	} 
+	if(qs.width){
+		mapWidth=qs.width;
+	}
+	//console.log(qs);
 	var svg = renderSvg(mapScript, mapWidth, mapHeight);
 	var newSvg = document.getElementById('wardley-map');
 

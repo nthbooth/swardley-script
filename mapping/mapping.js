@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
 	}
 	else
 	{
-	stufftosend="<html><head><link rel='stylesheet' type='text/css' href='styles.css'></head><body><h2>Enter URL For JSON Wardley Map</h2><form action='/' method='get' name='url'>URL:<input type='text' name='url'><input type='submit' value='submit'<</body></html>"
+	stufftosend="<html><head><link rel='stylesheet' type='text/css' href='styles.css'></head><body><h2>Enter URL For JSON Wardley Map</h2><form action='/' method='get' name='url'>URL:<input type='text' name='url'>Map Height:<input type='text' name='height'>Map Width:<input type='text' name='width'><input type='submit' value='submit'<</body></html>"
 	}
 	res.send(stufftosend)
 
