@@ -235,10 +235,12 @@ function parse_query_string(query) {
 	return query_string;
   }
 
+
 function draw() {
 	//get the query strings that are provided to the http request. 
 	//console.log( window.location.search.substring(1));
 	var qs= parse_query_string(window.location.search.substring(1))
+
 	//console.log(qs);
 	//console.log(qs.url);
 	//console.log(qs.height)
