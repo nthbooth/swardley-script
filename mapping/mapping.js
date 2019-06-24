@@ -13,8 +13,14 @@ router.use(function (req,res,next) {
 
 router.get('/', (req, res) => {
 //	console.log(req.query.url)
+	if(req.query.title){
+		var title=req.query.title;	
+	}
+	else{
+		var title="Wardley Map";
+	}
 	if(req.query.url){
-	var stufftosend='<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="styles.css"></head><body>  <h2>    Scripting a Wardley Map  </h2>   <div id="wardley-map">  </div>  <script type="text/javascript" src="'.concat(req.query.url,'"></script>  <script type="text/javascript" src="/renderSwardley.js"></script></body></html>')
+	var stufftosend='<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="styles.css"></head><body>  <h2>Wardley map</h2>   <div id="wardley-map">  </div>  <script type="text/javascript" src="'.concat(req.query.url,'"></script>  <script type="text/javascript" src="/renderSwardley.js"></script></body></html>')
 	}
 	else
 	{
@@ -28,6 +34,6 @@ app.use(express.static(path));
 app.use('/', router);
 
 app.listen(port, function () {
-	  console.log('Example app listening on port 8080!')
+	  console.log('mapping listening on 8080!')
 })
 
