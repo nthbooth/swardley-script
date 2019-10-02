@@ -51,6 +51,10 @@ var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
 
 };
 
+var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
+	        return '<line x1="'+matToX(startElement.maturity, mapWidth)+'" y1="'+visToY(startElement.visibility, mapHeight)+'" x2="'+matToX(endElement.maturity, mapWidth)+'" y2="'+visToY(endElement.visibility, mapHeight)+'" stroke="grey" />';
+};
+
 var getElementById = function(elements, id) {
 	var hasId = function(element) {
 		return element.id === id;
