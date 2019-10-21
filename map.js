@@ -8,8 +8,7 @@ var mapScript = {
 			name: "Customer",
 			visibility: 1.0,
 			maturity: 0.4,
-			circlecolour: "red",
-			outercirclecolour: "blue"
+			man: "yes"
 		},
 		{
 			id: "2",
@@ -22,7 +21,7 @@ var mapScript = {
 			id: "3",
 			name: "Online photo storage",
 			visibility: 0.8,
-			maturity: 0.375,
+			maturity: 0.375,:wq
 			circlecolour: "red"
 		},
 		{
