@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const router = express.Router();
 
@@ -11,7 +11,7 @@ router.use(function (req,res,next) {
 });
 
 
-router.get('/', (req, res) => {
+router.get("/", (req, res) => {
 //	console.log(req.query.url)
 	var stufftosend="";
 	var title;
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 	}
 	res.send(stufftosend);
 
-})
+});
 
 app.use(express.static(path));
 app.use("/", router);
