@@ -104,8 +104,8 @@ var renderMan = function(element, mapWidth, mapHeight) {
 }
 
 var renderArrorMaturity =function(element, mapWidth, mapHeight) {
+	var arrow_svg='';
 	if(element.arrowmaturity){
-		var arrow_svg='';
 		var x = matToX(element.maturity, mapWidth);
 		var y = visToY(element.visibility, mapHeight);
 		var yat = y-10;
@@ -113,7 +113,7 @@ var renderArrorMaturity =function(element, mapWidth, mapHeight) {
 		var xx1= matToX(element.arrowmaturity, mapWidth);
 		var arrowline='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>';
 
-		if(element.arrowreverse=="yes"){
+		if(element.arrowreverse){
 			var xb = x+10;	
 			arrow_svg=arrowline +
 					'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x+','+y+'" class="traingle" style="fill:red" />';						
