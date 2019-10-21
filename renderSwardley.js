@@ -77,25 +77,25 @@ var renderMan = function(element, mapWidth, mapHeight) {
 		manheadcolour=element.manheadcolour;
 	}
 	var headsize=4;
-	var man_y=y-18;
-	var ybodytop=man_y+headsize;
-	var ybody=man_y+11;
-	var manarmsy=man_y+8;
-	var manarmsx1=x-5;
-	var manarmsx2=x+5;
-	var legy=ybody+6;
-	var leg1x=x+4;
-	var leg2x=x-4;
-	var textx=x+10;
-	var texty=y-5;
+	var ManY=y-18;
+	var YBodyTop=ManY+headsize;
+	var YBody=ManY+11;
+	var MansArmsY=ManY+8;
+	var ManArmsX1=x-5;
+	var ManArmsX2=x+5;
+	var LegY=YBody+6;
+	var Leg1X=x+4;
+	var Leg2X=x-4;
+	var TextX=x+10;
+	var TextY=y-5;
 		var elementSvg =
 	'<g id="'+element.name+'"">' +
-											'<circle cx="'+x+'" cy="'+man_y+'" r="'+headsize+'" stroke="'+mancolour+'" fill="'+manheadcolour+'"/>'+
-											'<line x1="'+x+'" y1="'+ybodytop+'" x2="'+x+'" y2="'+ybody+'" stroke="'+mancolour+'" stroke-width="1"/>' + 
-														'<line x1="'+manarmsx1+'" y1="'+manarmsy+'" x2="'+manarmsx2+'" y2="'+manarmsy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
-														'<line x1="'+x+'" y1="'+ybody+'" x2="'+leg1x+'" y2="'+legy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
-											'<line x1="'+x+'" y1="'+ybody+'" x2="'+leg2x+'" y2="'+legy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
-						'<text x="'+textx+'" y="'+texty+'">' +
+											'<circle cx="'+x+'" cy="'+ManY+'" r="'+headsize+'" stroke="'+mancolour+'" fill="'+manheadcolour+'"/>'+
+											'<line x1="'+x+'" y1="'+YBodyTop+'" x2="'+x+'" y2="'+YBody+'" stroke="'+mancolour+'" stroke-width="1"/>' + 
+														'<line x1="'+ManArmsX1+'" y1="'+MansArmsY+'" x2="'+ManArmsX2+'" y2="'+MansArmsY+'" stroke="'+mancolour+'" stroke-width="1"/>' +
+														'<line x1="'+x+'" y1="'+YBody+'" x2="'+Leg1X+'" y2="'+LegY+'" stroke="'+mancolour+'" stroke-width="1"/>' +
+											'<line x1="'+x+'" y1="'+YBody+'" x2="'+Leg2X+'" y2="'+LegY+'" stroke="'+mancolour+'" stroke-width="1"/>' +
+						'<text x="'+TextX+'" y="'+TextY+'">' +
 					element.name +
 			  '</text>  ' +
 					'</g></g>';
@@ -151,7 +151,7 @@ var rendercirclecolour = function(element){
 	if(element.circlecolour){
 		return element.circlecolour;
 	} else {
-		return 'white';
+		return "white";
 	}
 }
 
@@ -179,8 +179,6 @@ var renderElement = function(element, mapWidth, mapHeight) {
     return elementSvg;
 };
 
-
-
 var renderElements = function(mapScript, mapWidth, mapHeight){
 	var mapElement = function (element) {
 		return renderElement(element, mapWidth, mapHeight);
@@ -197,8 +195,6 @@ var renderMap = function(mapScript, mapWidth, mapHeight) {
 	      '</g>' +
 	      '<g id="elements">' +
 	      	renderElements(mapScript, mapWidth, mapHeight) +
-	    
-
 	   	'</g></g>';
 
 	return mapSvg;
