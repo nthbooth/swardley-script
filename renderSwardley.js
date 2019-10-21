@@ -153,7 +153,7 @@ var rendercirclecolour = function(element){
 		 ReturnColour=element.circlecolour;
 	}
 	return ReturnColour;
-}
+};
 
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
@@ -190,12 +190,12 @@ var renderMap = function(mapScript, mapWidth, mapHeight) {
 
 	var mapSvg =
       	'<g id="map">' +
-	      '<g id="links">' +
-	      	renderLinks(mapScript, mapWidth, mapHeight) +
-	      '</g>' +
-	      '<g id="elements">' +
-	      	renderElements(mapScript, mapWidth, mapHeight) +
-	   	'</g></g>';
+		'<g id="links">' +
+	    renderLinks(mapScript, mapWidth, mapHeight) +
+	    '</g>' +
+		'<g id="elements">' +
+	    renderElements(mapScript, mapWidth, mapHeight) +
+		'</g></g>';
 
 	return mapSvg;
 };

@@ -37,5 +37,5 @@ app.use('/', router);
 
 app.listen(port, function () {
 	  console.log("mapping listening on 8080!");
-})
+});
 
