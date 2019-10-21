@@ -69,6 +69,45 @@ var renderLinks = function(mapScript, mapWidth, mapHeight) {
 	return mapScript.links.map(mapLink).join('');
 };
 
+var renderMan = function(element, mapWidth, mapHeight) {
+	var x = matToX(element.maturity, mapWidth);
+	var y = visToY(element.visibility, mapHeight);
+	var mancolour="black";
+	if(element.mancolour) { 
+		mancolour=element.mancolour; 
+	}
+	var manheadcolour="white";
+	if(element.manheadcolour){
+		manheadcolour=element.manheadcolour;
+	}
+	var headsize=4;
+	var man_y=y-18;
+	var ybodytop=man_y+headsize;
+	var ybody=man_y+11;
+	var manarmsy=man_y+8;
+	var manarmsx1=x-5;
+	var manarmsx2=x+5;
+	var legy=ybody+6;
+	var leg1x=x+4;
+	var leg2x=x-4;
+	var textx=x+10;
+	var texty=y-5;
+		var elementSvg =
+	'<g id="'+element.name+'"">' +
+											'<circle cx="'+x+'" cy="'+man_y+'" r="'+headsize+'" stroke="'+mancolour+'" fill="'+manheadcolour+'"/>'+
+											'<line x1="'+x+'" y1="'+ybodytop+'" x2="'+x+'" y2="'+ybody+'" stroke="'+mancolour+'" stroke-width="1"/>' + 
+														'<line x1="'+manarmsx1+'" y1="'+manarmsy+'" x2="'+manarmsx2+'" y2="'+manarmsy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
+														'<line x1="'+x+'" y1="'+ybody+'" x2="'+leg1x+'" y2="'+legy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
+											'<line x1="'+x+'" y1="'+ybody+'" x2="'+leg2x+'" y2="'+legy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
+						'<text x="'+textx+'" y="'+texty+'">' +
+					element.name +
+			  '</text>  ' +
+					'</g></g>';
+
+	return elementSvg;
+}
+
+
 
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
@@ -76,44 +115,7 @@ var renderElement = function(element, mapWidth, mapHeight) {
 	var outerCircleColour="";
 	var circleColour="";
 	if(element.man){
-			var mancolour="black";
-			if(element.mancolour) { 
-				mancolour=element.mancolour; 
-			}
-			var manheadcolour="white";
-			if(element.manheadcolour){
-				manheadcolour=element.manheadcolour;
-			}
-			var headsize=4;
-			var man_y=y-18;
-			var ybodytop=man_y+headsize;
-			var ybody=man_y+11;
-			//var ybody=y-3;
-			var manarmsy=man_y+8;
-			//var manarmsy=y-7;
-			var manarmsx1=x-5;
-			var manarmsx2=x+5;
-			var legy=ybody+6;
-			var leg1x=x+4;
-			var leg2x=x-4;
-			var textx=x+10;
-			var texty=y-5;
-		        var elementSvg =
-			'<g id="'+element.name+'"">' +
-			//'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
-			                                        outerCircleColour +
-			                                        '<circle cx="'+x+'" cy="'+man_y+'" r="'+headsize+'" stroke="'+mancolour+'" fill="'+manheadcolour+'"/>'+
-			                                        '<line x1="'+x+'" y1="'+ybodytop+'" x2="'+x+'" y2="'+ybody+'" stroke="'+mancolour+'" stroke-width="1"/>' + 
-                                                                '<line x1="'+manarmsx1+'" y1="'+manarmsy+'" x2="'+manarmsx2+'" y2="'+manarmsy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
-                                                                '<line x1="'+x+'" y1="'+ybody+'" x2="'+leg1x+'" y2="'+legy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
-			                                        '<line x1="'+x+'" y1="'+ybody+'" x2="'+leg2x+'" y2="'+legy+'" stroke="'+mancolour+'" stroke-width="1"/>' +
-								'<text x="'+textx+'" y="'+texty+'">' +
-			                element.name +
-			          '</text>  ' +
-			                '</g></g>';
-		//+
-		//	                '<g id="arrowbits">' + arrow_svg + inertiasvg;
-		    return elementSvg;
+			return renderMan(element, mapWidth, mapHeight);
 	}
 
 	if(element.outercirclecolour){
