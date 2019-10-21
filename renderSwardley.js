@@ -104,7 +104,7 @@ var renderMan = function(element, mapWidth, mapHeight) {
 }
 
 var renderArrorMaturity =function(element, mapWidth, mapHeight) {
-	var arrow_svg='';
+	var arrow_svg="";
 	if(element.arrowmaturity){
 		var x = matToX(element.maturity, mapWidth);
 		var y = visToY(element.visibility, mapHeight);
@@ -136,7 +136,7 @@ var renderoutercirclecolour= function(element){
 }
 
 var renderinertiasvg = function(element, mapWidth, mapHeight){
-	var inertiasvg='';
+	var inertiasvg="";
 	if(element.inertiamaturity)
 	{
 		var y = visToY(element.visibility, mapHeight);
