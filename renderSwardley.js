@@ -148,11 +148,11 @@ var renderinertiasvg = function(element, mapWidth, mapHeight){
 }
 
 var rendercirclecolour = function(element){
+	var ReturnColour="white";
 	if(element.circlecolour){
-		return element.circlecolour;
-	} else {
-		return "white";
+		 ReturnColour=element.circlecolour;
 	}
+	return ReturnColour;
 }
 
 var renderElement = function(element, mapWidth, mapHeight) {
