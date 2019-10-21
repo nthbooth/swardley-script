@@ -107,7 +107,25 @@ var renderMan = function(element, mapWidth, mapHeight) {
 	return elementSvg;
 }
 
-
+var renderArrorMaturity =function(element, mapWidth, mapHeight) {
+	var x = matToX(element.maturity, mapWidth);
+	var y = visToY(element.visibility, mapHeight);
+		var xx1= matToX(element.arrowmaturity, mapWidth);
+		if(element.arrowreverse=="yes"){
+			var yat = y-10;
+			var yab = y+10;
+			var xb = x+10;	
+			arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>'+
+					'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x+','+y+'" class="traingle" style="fill:red" />';						
+		}else{
+			var yat = y-10;
+			var yab = y+10;
+			var xp = xx1+10;
+			arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>'+ 
+					'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  style="fill:red" />';
+		}
+		return arrow_svg;
+	}
 
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
@@ -135,20 +153,7 @@ var renderElement = function(element, mapWidth, mapHeight) {
 
 	// arrowreverse
 	if(element.arrowmaturity){
-		var xx1= matToX(element.arrowmaturity, mapWidth);
-		if(element.arrowreverse=="yes"){
-			var yat = y-10;
-			var yab = y+10;
-			var xb = x+10;	
-			arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>'+
-					'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x+','+y+'" class="traingle" style="fill:red" />';						
-		}else{
-			var yat = y-10;
-			var yab = y+10;
-			var xp = xx1+10;
-			arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>'+ 
-					'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  style="fill:red" />';
-		}
+		arrow_svg=renderArrorMaturity(element, mapWidth, mapHeight)
 	}
 	var inertiasvg="";
 	if(element.inertiamaturity)
