@@ -21,7 +21,7 @@ var mapScript = {
 			id: "3",
 			name: "Online photo storage",
 			visibility: 0.8,
-			maturity: 0.375,:wq
+			maturity: 0.375,
 			circlecolour: "red"
 		},
 		{
