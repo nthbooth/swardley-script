@@ -130,7 +130,7 @@ var renderArrorMaturity =function(element, mapWidth, mapHeight) {
 	return "";
 	}
 
-var renderoutercirclecolour= function(element, mapWidth, mapHeight){
+var renderoutercirclecolour= function(element){
 	if(element.outercirclecolour){
 	var outerCircleColour='<circle cx="0" cy="0" r="10" stroke="black" fill="' +
 	element.outercirclecolour + '" />';
@@ -150,26 +150,25 @@ var renderinertiasvg = function(element, mapWidth, mapHeight){
 	}
 }
 
+var rendercirclecolour = function(element){
+	if(element.circlecolour){
+		return element.circlecolour;
+	} else {
+		return 'white';
+	}
+}
+
 var renderElement = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
 	var y = visToY(element.visibility, mapHeight);
-	var circleColour="";
+	
 	if(element.man){
 			return renderMan(element, mapWidth, mapHeight);
 	}
-
-	var	outerCircleColour=renderoutercirclecolour(element, mapWidth, mapHeight);
-
-	if(element.circlecolour){
-		circleColour=element.circlecolour;
-	} else {
-		circleColour='white';
-	}
-
+	var	outerCircleColour=renderoutercirclecolour(element);
+	var circleColour=rendercirclecolour(element);
 	var	arrow_svg=renderArrorMaturity(element, mapWidth, mapHeight);
-	
 	var inertiasvg=renderinertiasvg(element, mapWidth, mapHeight);
-		
 	var elementSvg =
 		'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
 					outerCircleColour +
