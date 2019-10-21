@@ -112,17 +112,18 @@ var renderArrorMaturity =function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
 	var y = visToY(element.visibility, mapHeight);
 		var xx1= matToX(element.arrowmaturity, mapWidth);
+		var arrowline='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>';
 		if(element.arrowreverse=="yes"){
 			var yat = y-10;
 			var yab = y+10;
 			var xb = x+10;	
-			arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>'+
+			arrow_svg=arrowline +
 					'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x+','+y+'" class="traingle" style="fill:red" />';						
 		}else{
 			var yat = y-10;
 			var yab = y+10;
 			var xp = xx1+10;
-			arrow_svg='<line x1="'+x+'" y1="'+y+'" x2="'+xx1+'" y2="'+y+'" stroke="red" stroke-width="3" stroke-dasharray="4 4"/>'+ 
+			arrow_svg=arrowline + 
 					'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  style="fill:red" />';
 		}
 		return arrow_svg;
