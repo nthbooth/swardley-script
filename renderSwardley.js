@@ -302,6 +302,9 @@ function draw() {
 	//console.log(qs);
 	//console.log(qs.url);
 	//console.log(qs.height)
+	var mapHeight = 600;
+	var mapWidth = 900;
+	
 	if(qs.height){
 		mapHeight=qs.height;
 	} 
