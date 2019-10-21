@@ -13,7 +13,7 @@ router.use(function (req,res,next) {
 
 router.get('/', (req, res) => {
 //	console.log(req.query.url)
-	var stufftosend='';
+	var stufftosend="";
 	var title;
 	if(req.query.title){
 		title=req.query.title;	
