@@ -13,14 +13,15 @@ router.use(function (req,res,next) {
 
 router.get('/', (req, res) => {
 //	console.log(req.query.url)
+	var title;
 	if(req.query.title){
-		var title=req.query.title;	
+		title=req.query.title;	
 	}
 	else{
-		var title="Wardley Map";
+		title="Wardley Map";
 	}
 	if(req.query.url){
-	var stufftosend='<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="styles.css"></head><body>  <h2>Wardley map</h2>   <div id="wardley-map">  </div>  <script type="text/javascript" src="'.concat(req.query.url,'"></script>  <script type="text/javascript" src="/renderSwardley.js"></script></body></html>')
+	var stufftosend='<!DOCTYPE html><html><head><link rel="stylesheet" type="text/css" href="styles.css"></head><body>  <h2>'+title+'</h2>   <div id="wardley-map">  </div>  <script type="text/javascript" src="'.concat(req.query.url,'"></script>  <script type="text/javascript" src="/renderSwardley.js"></script></body></html>')
 	}
 	else
 	{
