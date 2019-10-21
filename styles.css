@@ -41,7 +41,7 @@ audio {
     max-width: 80%;
 }
 
-div.caption: {
+div.caption {
     float: left;
     clear: both;
 }
