@@ -105,6 +105,7 @@ var renderMan = function(element, mapWidth, mapHeight) {
 
 var renderArrorMaturity =function(element, mapWidth, mapHeight) {
 	if(element.arrowmaturity){
+		var arrow_svg='';
 		var x = matToX(element.maturity, mapWidth);
 		var y = visToY(element.visibility, mapHeight);
 		var yat = y-10;
@@ -121,9 +122,8 @@ var renderArrorMaturity =function(element, mapWidth, mapHeight) {
 			arrow_svg=arrowline + 
 					'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  style="fill:red" />';
 		}
-		return arrow_svg;
 	}
-	return "";
+	return arrow_svg;
 	}
 
 var renderoutercirclecolour= function(element){
@@ -136,14 +136,15 @@ var renderoutercirclecolour= function(element){
 }
 
 var renderinertiasvg = function(element, mapWidth, mapHeight){
+	var inertiasvg='';
 	if(element.inertiamaturity)
 	{
 		var y = visToY(element.visibility, mapHeight);
 		var xxinertia=matToX(element.inertiamaturity, mapWidth)-7.5;
 		var yat = y-15;
-		var inertiasvg='<rect x="'+xxinertia+'" y="'+yat+'" width="10" height="30" style="fill:black"/>';
-		return inertiasvg;
+		inertiasvg='<rect x="'+xxinertia+'" y="'+yat+'" width="10" height="30" style="fill:black"/>';
 	}
+	return inertiasvg;
 }
 
 var rendercirclecolour = function(element){
