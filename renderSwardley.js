@@ -75,6 +75,39 @@ var renderElement = function(element, mapWidth, mapHeight) {
 	var y = visToY(element.visibility, mapHeight);
 	var outerCircleColour="";
 	var circleColour="";
+	if(element.man){
+			var mancolour="black";
+			if(element.mancolour) { 
+				mancolour=element.mancolour; 
+			}
+			var man_y=y-15;
+			var ybody=y+5;
+			var manarmsy=y-5;
+			var manarmsx1=x-10;
+			var manarmsx2=x+10;
+			var legy=y+17;
+			var leg1x=x+7;
+			var leg2x=x-7;
+			var textx=x+10;
+			var texty=x-5;
+		        var elementSvg =
+			'<g id="'+element.name+'"">' +
+			//'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
+			                                        outerCircleColour +
+			                                        '<circle cx="'+x+'" cy="'+man_y+'" r="5" stroke="'+mancolour+'" fill="'+mancolour+'"/>'+
+			                                        '<line x1="'+x+'" y1="'+man_y+'" x2="'+x+'" y2="'+ybody+'" stroke="'+mancolour+'" stroke-width="3"/>' + 
+                                                                '<line x1="'+manarmsx1+'" y1="'+manarmsy+'" x2="'+manarmsx2+'" y2="'+manarmsy+'" stroke="'+mancolour+'" stroke-width="3"/>' +
+                                                                '<line x1="'+x+'" y1="'+ybody+'" x2="'+leg1x+'" y2="'+legy+'" stroke="'+mancolour+'" stroke-width="3"/>' +
+			                                        '<line x1="'+x+'" y1="'+ybody+'" x2="'+leg2x+'" y2="'+legy+'" stroke="'+mancolour+'" stroke-width="3"/>' +
+								'<text x="'+textx+'" y="'+texty+'">' +
+			                element.name +
+			          '</text>  ' +
+			                '</g></g>';
+		//+
+		//	                '<g id="arrowbits">' + arrow_svg + inertiasvg;
+		    return elementSvg;
+	}
+
 	if(element.outercirclecolour){
 		outerCircleColour=
 				'<circle cx="0" cy="0" r="10" stroke="black" fill="' +
