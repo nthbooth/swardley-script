@@ -1,3 +1,4 @@
+[![codebeat badge](https://codebeat.co/badges/b3d8cd3b-5f1d-4d19-a16a-61da4a745dc8)](https://codebeat.co/projects/github-com-nthbooth-swardley-script-master)
 # swardley-script
 A fork of a prototype of a way to script wardley maps as code. 
 
