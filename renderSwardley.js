@@ -104,7 +104,7 @@ var renderMan = function(element, mapWidth, mapHeight) {
 }
 
 var renderArrorMaturity =function(element, mapWidth, mapHeight) {
-	var arrow_svg="";
+	var ArrowSVG="";
 	if(element.arrowmaturity){
 		var x = matToX(element.maturity, mapWidth);
 		var y = visToY(element.visibility, mapHeight);
@@ -115,15 +115,15 @@ var renderArrorMaturity =function(element, mapWidth, mapHeight) {
 
 		if(element.arrowreverse){
 			var xb = x+10;	
-			arrow_svg=arrowline +
+			ArrowSVG=arrowline +
 					'<polygon points="'+xb+','+yat+' '+xb+' ,'+yab+' '+x+','+y+'" class="traingle" style="fill:red" />';						
 		}else{
 			var xp = xx1+10;
-			arrow_svg=arrowline + 
+			ArrowSVG=arrowline + 
 					'<polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y+'" class="traingle"  style="fill:red" />';
 		}
 	}
-	return arrow_svg;
+	return ArrowSVG;
 	}
 
 var renderoutercirclecolour= function(element){
@@ -164,7 +164,7 @@ var renderElement = function(element, mapWidth, mapHeight) {
 	}
 	var	outerCircleColour=renderoutercirclecolour(element);
 	var circleColour=rendercirclecolour(element);
-	var	arrow_svg=renderArrorMaturity(element, mapWidth, mapHeight);
+	var	ArrowSVG=renderArrorMaturity(element, mapWidth, mapHeight);
 	var inertiasvg=renderinertiasvg(element, mapWidth, mapHeight);
 	var elementSvg =
 		'<g id="'+element.name+'" transform="translate('+x+','+y+')">' +
@@ -175,7 +175,7 @@ var renderElement = function(element, mapWidth, mapHeight) {
           	element.name +
           '</text>  ' + 
 		'</g></g>'+
-		'<g id="arrowbits">' + arrow_svg + inertiasvg;
+		'<g id="arrowbits">' + ArrowSVG + inertiasvg;
     return elementSvg;
 };
 
@@ -189,9 +189,9 @@ var renderElements = function(mapScript, mapWidth, mapHeight){
 var renderMap = function(mapScript, mapWidth, mapHeight) {
 
 	var mapSvg =
-      	'<g id="map">' +
+		'<g id="map">' +
 		'<g id="links">' +
-	    renderLinks(mapScript, mapWidth, mapHeight) +
+		renderLinks(mapScript, mapWidth, mapHeight) +
 	    '</g>' +
 		'<g id="elements">' +
 	    renderElements(mapScript, mapWidth, mapHeight) +
