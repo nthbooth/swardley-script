@@ -73,7 +73,8 @@ var mapScript = {
 	links: [
 		{
 			start: "1",
-			end: "2"
+			end: "2",
+			colour: "red"
 		},
 		{
 			start: "1",

@@ -41,13 +41,15 @@ var matToX = function (maturity, mapWidth) {
 	return maturity*mapWidth;
 };
 
-var renderLink = function(startElement, endElement, mapWidth, mapHeight) {
+var renderLink = function(startElement, endElement, mapWidth, mapHeight,linkColour) {
 	var x1 = matToX(startElement.maturity, mapWidth);
 	var x2 = matToX(endElement.maturity, mapWidth);
 	var y1 = visToY(startElement.visibility, mapHeight);
 	var y2 = visToY(endElement.visibility, mapHeight);
-	
-	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="grey" />';
+	if(!linkColour){
+		linkColour="grey";
+	}
+	return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+'" stroke="'+linkColour+'"  stroke-width="2" />';
 
 };
 
@@ -60,7 +62,7 @@ var getElementById = function(elements, id) {
 
 var renderLinks = function(mapScript, mapWidth, mapHeight) {
 	var mapLink = function(link) {
-		return renderLink(getElementById(mapScript.elements,link.start), getElementById(mapScript.elements,link.end), mapWidth, mapHeight);
+		return renderLink(getElementById(mapScript.elements,link.start), getElementById(mapScript.elements,link.end), mapWidth, mapHeight, link.colour);
 	};
 	return mapScript.links.map(mapLink).join('');
 };
