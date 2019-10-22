@@ -206,7 +206,7 @@ var renderSvg = function(mapScript, mapWidth, mapHeight) {
 	var svgWidth = mapWidth+2*padding;
 	var svgHeight = mapHeight+4*padding;
 	var vbWidth = mapWidth+padding;
-	var vbHeight = mapHeight+padding+50;
+	var vbHeight = mapHeight+padding;
 	var custMark = mapWidth/4;
 	var prodMark = mapWidth/2;
 	var commMark = mapWidth/4*3;
@@ -237,48 +237,48 @@ var renderSvg = function(mapScript, mapWidth, mapHeight) {
 					'<text x="0" y="2em" text-anchor="start">' +
 					'Practice: Novel' +
 					'</text>' +
-					'<text x="0" y="3em" text-anchor="start">' +
-					'Data: Unmodelled' +
-					'</text>'  +
-					'<text x="0" y="4em" text-anchor="start">' +
-					'Knowledge: Concept' +
-					'</text>' +
+				//	'<text x="0" y="3em" text-anchor="start">' +
+				//	'Data: Unmodelled' +
+				//	'</text>'  +
+				//	'<text x="0" y="4em" text-anchor="start">' +
+				//	'Knowledge: Concept' +
+				//	'</text>' +
 					'<text x="'+custMark+'" y="1em" text-anchor="start">' +
 						'&nbsp;Activity: Custom (built)' +
 					'</text>' +
 					'<text x="'+custMark+'" y="2em" text-anchor="start">' +
 					'&nbsp;Practice: Emerging' +
 					'</text>' +
-					'<text x="'+custMark+'" y="3em" text-anchor="start">' +
-					'&nbsp;Data: Divergent' +
-					'</text>' +
-					'<text x="'+custMark+'" y="4em" text-anchor="start">' +
-					'&nbsp;Knowledge: Hypothesis' +
-					'</text>' +
+				//	'<text x="'+custMark+'" y="3em" text-anchor="start">' +
+				//	'&nbsp;Data: Divergent' +
+				//	'</text>' +
+				//	'<text x="'+custMark+'" y="4em" text-anchor="start">' +
+				//	'&nbsp;Knowledge: Hypothesis' +
+				//	'</text>' +
 					'<text x="'+prodMark+'" y="1em" text-anchor="start">' +
 						'&nbsp;Activity: Product/Rental' +
 					'</text>' +
 					'<text x="'+prodMark+'" y="2em" text-anchor="start">' +
 						'&nbsp;Practice: Good' +
 					'</text>' +
-					'<text x="'+prodMark+'" y="3em" text-anchor="start">' +
-						'&nbsp;Data: Convergent' +
-					'</text>' +
-					'<text x="'+prodMark+'" y="4em" text-anchor="start">' +
-						'&nbsp;Knowledge: Theory' +
-					'</text>' +
+				//	'<text x="'+prodMark+'" y="3em" text-anchor="start">' +
+				//		'&nbsp;Data: Convergent' +
+				//	'</text>' +
+				//	'<text x="'+prodMark+'" y="4em" text-anchor="start">' +
+				//		'&nbsp;Knowledge: Theory' +
+				//	'</text>' +
 					'<text x="'+commMark+'" y="1em" text-anchor="start">' +
 						'&nbsp;Activity: Commodity/Utility' +
 					'</text>' +
 					'<text x="'+commMark+'" y="2em" text-anchor="start">' +
 						'&nbsp;Practice: Best' +
 					'</text>' +
-					'<text x="'+commMark+'" y="3em" text-anchor="start">' +
-					'&nbsp;Data: Moddlled' +
-				'</text>' +
-				'<text x="'+commMark+'" y="4em" text-anchor="start">' +
-				'&nbsp;Knowledge: Universally Accepted' +
-			'</text>' +
+				//	'<text x="'+commMark+'" y="3em" text-anchor="start">' +
+				//		'&nbsp;Data: Moddlled' +
+				//	'</text>' +
+				//		'<text x="'+commMark+'" y="4em" text-anchor="start">' +
+				//	'&nbsp;Knowledge: Universally Accepted' +
+				//	'</text>' +
 					'<text x="'+mapWidth+'" y="2em" text-anchor="end" font-weight="bold">' +
 						'Evolution' +
 					'</text>' +
