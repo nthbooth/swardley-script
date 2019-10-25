@@ -128,5 +128,21 @@ var mapScript = {
 			start: "9",
 			end: "10"
 		}
+	],
+	shapes: [
+		{
+			type:"square",
+			x1: 0.2,
+			x2: 0.8,
+			y1: 0.2,
+			y2: 0.7
+		},
+		{
+			type: "ellipse",
+			x1: "0.2",
+			y1: "0.2",
+			rx: "0.2",
+			ry: "0.3"
+			}
 	]
 };

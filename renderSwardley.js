@@ -67,6 +67,56 @@ var renderLinks = function(mapScript, mapWidth, mapHeight) {
 	return mapScript.links.map(mapLink).join('');
 };
 
+var renderShape = function(shape, mapWidth, mapHeight) {
+	console.log(shape.type);
+	if(shape.type == "square"){
+		return renderSquare(shape, mapWidth, mapHeight)
+	}
+	if(shape.type == "eclipse"){
+		return renderEllipse(shape, mapWidth, mapHeight)
+	}
+
+}
+
+
+var renderEllipse = function(shape, mapWidth, mapHeight) {
+	var cx = matToX(shape.x1, mapWidth);
+	var rx = matToX(shape.rx, mapWidth);
+	var cy = matToX(shape.y1, mapHeight);
+	var ry = visToY(shape.ry, mapHeight);
+
+
+	//console.log('<rect x="'+x1+'" y="'+y1+'"  width="'+width+'" height="'+height+'"/>');
+	return '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" style="fill:blue;stroke:black;stroke-width:1;opacity:0.2" />';
+	
+//return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3"/> <polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
+
+};
+
+
+var renderSquare = function(shape, mapWidth, mapHeight) {
+	var x1 = matToX(shape.x1, mapWidth);
+	var x2 = matToX(shape.x2, mapWidth);
+	var y1 = matToX(shape.y1, mapHeight);
+	var y2 = visToY(shape.y2, mapHeight);
+	var width=x2-x1;
+	var height=y2-y1;
+
+	//console.log('<rect x="'+x1+'" y="'+y1+'"  width="'+width+'" height="'+height+'"/>');
+	return '<rect x="'+x1+'" y="'+y1+'" rx="20" ry="20" width="'+width+'" height="'+height+'" style="fill:blue;stroke:black;stroke-width:1;opacity:0.2" />';
+	
+//return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3"/> <polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
+
+};
+
+
+var renderShapes = function(mapScript, mapWidth, mapHeight) {
+	var mapShape = function(shape) {
+		return renderShape(getElementById(mapScript.shapes,shape.start), mapWidth, mapHeight);
+	};
+	return mapScript.shapes.map(mapShape).join('');
+};
+
 var renderMan = function(element, mapWidth, mapHeight) {
 	var x = matToX(element.maturity, mapWidth);
 	var y = visToY(element.visibility, mapHeight);
@@ -194,7 +244,10 @@ var renderMap = function(mapScript, mapWidth, mapHeight) {
 		'<g id="map">' +
 		'<g id="links">' +
 		renderLinks(mapScript, mapWidth, mapHeight) +
-	    '</g>' +
+		'</g>' +
+		'<g id="shapes">' +
+		renderShapes(mapScript, mapWidth, mapHeight) +
+		'</g></g>' +
 		'<g id="elements">' +
 	    renderElements(mapScript, mapWidth, mapHeight) +
 		'</g></g>';
@@ -321,7 +374,7 @@ function draw() {
 	//get the query strings that are provided to the http request. 
 	//console.log( window.location.search.substring(1));
 	var qs= parse_query_string(window.location.search.substring(1))
-
+	console.log("Test")
 	//console.log(qs);
 	//console.log(qs.url);
 	//console.log(qs.height)
