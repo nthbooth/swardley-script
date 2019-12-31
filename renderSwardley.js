@@ -264,6 +264,8 @@ var renderSvg = function(mapScript, mapWidth, mapHeight) {
 	var prodMark = mapWidth/2;
 	var commMark = mapWidth/4*3;
 	var visMark = mapHeight/2;
+	var visArrowx1=mapHeight-20;
+	var evoArrowy1=mapWidth-20;
 	var svgHeader =
 		'<svg width="'+svgWidth+'" height="'+svgHeight+'" viewbox="-'+padding+' 0 '+vbWidth+' '+vbHeight+'" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">' +
 			'<g id="grid">' +
@@ -281,6 +283,8 @@ var renderSvg = function(mapScript, mapWidth, mapHeight) {
 					'<text x="'+mapHeight+'" y="-0.2em" text-anchor="end">' +
 						'Visible' +
 					'</text>' +
+					'<polygon points="'+visArrowx1+',10 '+mapHeight+',0 '+visArrowx1+',0" style="fill:black;stroke:black;stroke-width:1" />'+
+					'<polygon points="0,'+mapWidth+' 10,'+evoArrowy1+' 0,'+evoArrowy1+'" style="fill:black;stroke:black;stroke-width:1" />'+
 				'</g>' +
 				'<g id="Evolution" transform="translate(0,'+mapHeight+')">' +
 					'<line x1="0" y1="0" x2="'+mapWidth+'" y2="0" stroke="black"/>' +
@@ -335,7 +339,6 @@ var renderSvg = function(mapScript, mapWidth, mapHeight) {
 					'<text x="'+mapWidth+'" y="2em" text-anchor="end" font-weight="bold">' +
 						'Evolution' +
 					'</text>' +
-					
 				'</g>' +
 			'</g>';
 
