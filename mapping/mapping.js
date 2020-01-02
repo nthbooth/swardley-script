@@ -26,7 +26,7 @@ router.get("/", (req, res) => {
 	}
 	else
 	{
-	stufftosend="<html xmlns='http://www.w3.org/1999/xhtml' lang='en' xml:lang='en'><head><link rel='stylesheet' type='text/css' href='styles.css'><title>Wardley Mapping</title></head><body><h2>Enter URL For JSON Wardley Map</h2><form action='/' method='get' name='url'>URL:<input type='text' name='url'>Map Height:<input type='text' name='height'>Map Width:<input type='text' name='width'><input type='submit' value='submit'<</body></html>";
+	stufftosend="<html xmlns='http://www.w3.org/1999/xhtml' lang='en' xml:lang='en'><head><link rel='stylesheet' type='text/css' href='styles.css'><title>Wardley Mapping</title></head><body><h2>Enter URL For JSON Wardley Map</h2><form action='/' method='get' name='url'>URL:<input type='text' name='url'>Map Height:<input type='text' value='768' name='height'>Map Width:<input type='text' value='1024' name='width'><input type='submit' value='submit'<</body></html>";
 	}
 	res.send(stufftosend);
 
