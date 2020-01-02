@@ -68,7 +68,6 @@ var renderLinks = function(mapScript, mapWidth, mapHeight) {
 };
 
 var renderShape = function(shape, mapWidth, mapHeight) {
-	console.log(shape.type);
 	if(shape.type == "square"){
 		return renderSquare(shape, mapWidth, mapHeight)
 	}
@@ -85,11 +84,8 @@ var renderEllipse = function(shape, mapWidth, mapHeight) {
 	var cy = matToX(shape.y1, mapHeight);
 	var ry = visToY(shape.ry, mapHeight);
 
-
-	//console.log('<rect x="'+x1+'" y="'+y1+'"  width="'+width+'" height="'+height+'"/>');
 	return '<ellipse cx="'+cx+'" cy="'+cy+'" rx="'+rx+'" ry="'+ry+'" style="fill:blue;stroke:black;stroke-width:1;opacity:0.2" />';
 	
-//return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3"/> <polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
 
 };
 
@@ -97,15 +93,19 @@ var renderEllipse = function(shape, mapWidth, mapHeight) {
 var renderSquare = function(shape, mapWidth, mapHeight) {
 	var x1 = matToX(shape.x1, mapWidth);
 	var x2 = matToX(shape.x2, mapWidth);
-	var y1 = matToX(shape.y1, mapHeight);
+	var y1 = visToY(shape.y1, mapHeight);
 	var y2 = visToY(shape.y2, mapHeight);
-	var width=x2-x1;
+	var width=x1-x2;
+	if(x1<x2){
+	width=x2-x1;
+	}
+	height=y1-y2;
+	if(y1<y2)
+	{
 	var height=y2-y1;
-
-	//console.log('<rect x="'+x1+'" y="'+y1+'"  width="'+width+'" height="'+height+'"/>');
+	}
 	return '<rect x="'+x1+'" y="'+y1+'" rx="20" ry="20" width="'+width+'" height="'+height+'" style="fill:blue;stroke:black;stroke-width:1;opacity:0.2" />';
 	
-//return '<line x1="'+x1+'" y1="'+y1+'" x2="'+xx1+'" y2="'+y1+'" stroke="grey" stroke-width="3"/> <polygon points="'+xx1+','+yat+' '+xx1+' ,'+yab+' '+xp+','+y1+'" class="traingle"  />';
 
 };
 
@@ -375,12 +375,8 @@ function parse_query_string(query) {
 
 function draw() {
 	//get the query strings that are provided to the http request. 
-	//console.log( window.location.search.substring(1));
 	var qs= parse_query_string(window.location.search.substring(1))
-	console.log("Test")
-	//console.log(qs);
-	//console.log(qs.url);
-	//console.log(qs.height)
+
 	var mapHeight = 600;
 	var mapWidth = 900;
 	
@@ -390,7 +386,6 @@ function draw() {
 	if(qs.width){
 		mapWidth=qs.width;
 	}
-	//console.log(qs);
 	var svg = renderSvg(mapScript, mapWidth, mapHeight);
 	var newSvg = document.getElementById('wardley-map');
 
