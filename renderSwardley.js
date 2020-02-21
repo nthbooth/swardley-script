@@ -99,10 +99,10 @@ var renderSquare = function(shape, mapWidth, mapHeight) {
 	if(x1<x2){
 	width=x2-x1;
 	}
-	height=y1-y2;
+	var height=y1-y2;
 	if(y1<y2)
 	{
-	var height=y2-y1;
+	height=y2-y1;
 	}
 	return '<rect x="'+x1+'" y="'+y1+'" rx="20" ry="20" width="'+width+'" height="'+height+'" style="fill:blue;stroke:black;stroke-width:1;opacity:0.2" />';
 	
@@ -377,8 +377,8 @@ function draw() {
 	//get the query strings that are provided to the http request. 
 	var qs= parse_query_string(window.location.search.substring(1))
 
-	var mapHeight = 600;
-	var mapWidth = 900;
+	var mapHeight = 1000;
+	var mapWidth = 1500;
 	
 	if(qs.height){
 		mapHeight=qs.height;
