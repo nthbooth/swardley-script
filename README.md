@@ -15,6 +15,8 @@ Align to: [Book Link](https://medium.com/wardleymaps/getting-started-yourself-e1
 
 Wardley Mapping courtesy of Simon Wardley, CC BY-SA 4.0. To learn more about mapping, see [Simon's book](https://medium.com/wardleymaps/on-being-lost-2ef5f05eb1ec).
 
+NOTE THE GOOGLE SHEETS PART OF THIS NO LONGER WORKS DUE TO CHANGES IN CHROME/Google Docs
+
 Wardley Map as a Google sheet.
 
 Google sheet that extracts as a json wardley map can be found at the following location: [Google Sheet](https://docs.google.com/spreadsheets/d/1CgF4vzR58GG8WJJpAXHzuGeePW53qyNfApvGJ72n_QA/edit?usp=sharing)
